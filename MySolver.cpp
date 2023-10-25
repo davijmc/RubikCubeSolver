@@ -2,28 +2,30 @@
 By: DaviJMC
 Last Update: 23/10/2023 (DD/MM/YYYY)
 */
+// Add func de mudar de face
 #include <iostream>
 
 using namespace std;
 
-#define red 0
+#define wht 0
 #define org 1
-#define ble 2
-#define grn 3
-#define yel 4
-#define wit 5
+#define grn 2
+#define red 3
+#define ble 4
+#define yel 5
+
 
 // Seta matriz do cubo
 void setCubo(int cubo[6][3][3]) {
-    cubo[0][0][0] = wit;
-    cubo[0][0][1] = wit;
-    cubo[0][0][2] = wit;
-    cubo[0][1][0] = wit;
-    cubo[0][1][1] = wit;
-    cubo[0][1][2] = wit;
-    cubo[0][2][0] = wit;
-    cubo[0][2][1] = wit;
-    cubo[0][2][2] = wit;
+    cubo[0][0][0] = wht;
+    cubo[0][0][1] = wht;
+    cubo[0][0][2] = wht;
+    cubo[0][1][0] = wht;
+    cubo[0][1][1] = wht;
+    cubo[0][1][2] = wht;
+    cubo[0][2][0] = wht;
+    cubo[0][2][1] = wht;
+    cubo[0][2][2] = wht;
     cubo[1][0][0] = org;
     cubo[1][0][1] = org;
     cubo[1][0][2] = org;
@@ -76,7 +78,26 @@ void showCubo(int cubo[6][3][3]){
     for(int i =0; i<6; i++){
         for(int j =0; j<3; j++){        
             for(int k =0; k<3; k++){
-                cout << cubo[i][j][k];
+                switch(cubo[i][j][k]){
+                    case 0:
+                        cout << "wht ";
+                        break;
+                    case 1:
+                        cout << "org ";
+                        break;
+                    case 2:
+                        cout << "grn ";
+                        break;
+                    case 3:
+                        cout << "red ";
+                        break;
+                    case 4:
+                        cout << "ble ";
+                        break;
+                    case 5:
+                        cout << "yel ";
+                        break;
+                }
             }
             cout << endl;
         }
@@ -92,55 +113,102 @@ int nextmov(){
 }
 
 
-int r(int cubo[6][3][3]){
+void r(int cubo[6][3][3]){
     int aux[3];
-    aux[0] = cubo[0][0][2];
-    aux[1] = cubo[0][1][2];
-    aux[2] = cubo[0][2][2];
-    cubo[0][0][2] = cubo[4][0][2];
-    cubo[0][1][2] = cubo[4][1][2];
-    cubo[0][2][2] = cubo[4][2][2];
-    cubo[4][0][2] = cubo[5][0][2];
-    cubo[4][1][2] = cubo[5][1][2];
-    cubo[4][2][2] = cubo[5][2][2];
-    cubo[5][0][2] = cubo[2][0][2];
-    cubo[5][1][2] = cubo[2][1][2];
-    cubo[5][2][2] = cubo[2][2][2];
-    cubo[2][0][2] = aux[0];
-    cubo[2][1][2] = aux[1];
-    cubo[2][2][2] = aux[2];
+    aux[0] = cubo[wht][0][2];
+    aux[1] = cubo[wht][1][2];
+    aux[2] = cubo[wht][2][2];
+    cubo[wht][0][2] = cubo[ble][0][2];
+    cubo[wht][1][2] = cubo[ble][1][2];
+    cubo[wht][2][2] = cubo[ble][2][2];
+    cubo[ble][0][2] = cubo[yel][0][2];
+    cubo[ble][1][2] = cubo[yel][1][2];
+    cubo[ble][2][2] = cubo[yel][2][2];
+    cubo[yel][0][2] = cubo[grn][0][2];
+    cubo[yel][1][2] = cubo[grn][1][2];
+    cubo[yel][2][2] = cubo[grn][2][2];
+    cubo[grn][0][2] = aux[0];
+    cubo[grn][1][2] = aux[1];
+    cubo[grn][2][2] = aux[2];
 }
-int rl(){
-    
+
+void rl(int cubo[6][3][3]){
+    int aux[3];
+    aux[0] = cubo[wht][0][2];
+    aux[1] = cubo[wht][1][2];
+    aux[2] = cubo[wht][2][2];
+    cubo[wht][0][2] = cubo[grn][0][2];
+    cubo[wht][1][2] = cubo[grn][1][2];
+    cubo[wht][2][2] = cubo[grn][2][2];
+    cubo[grn][0][2] = cubo[yel][0][2];
+    cubo[grn][1][2] = cubo[yel][1][2];
+    cubo[grn][2][2] = cubo[yel][2][2];
+    cubo[yel][0][2] = cubo[ble][0][2];
+    cubo[yel][1][2] = cubo[ble][1][2];
+    cubo[yel][2][2] = cubo[ble][2][2];
+    cubo[ble][0][2] = aux[0];
+    cubo[ble][1][2] = aux[1];
+    cubo[ble][2][2] = aux[2];
 }
-int l(){
+
+int l(int cubo[6][3][3]){
+     int aux[3];
+    aux[0] = cubo[wht][0][0];
+    aux[1] = cubo[wht][1][0];
+    aux[2] = cubo[wht][2][0];
+    cubo[wht][0][0] = cubo[ble][0][0];
+    cubo[wht][1][0] = cubo[ble][1][0];
+    cubo[wht][2][0] = cubo[ble][2][0];
+    cubo[ble][0][0] = cubo[yel][0][0];
+    cubo[ble][1][0] = cubo[yel][1][0];
+    cubo[ble][2][0] = cubo[yel][2][0];
+    cubo[yel][0][0] = cubo[grn][0][0];
+    cubo[yel][1][0] = cubo[grn][1][0];
+    cubo[yel][2][0] = cubo[grn][2][0];
+    cubo[grn][0][0] = aux[0];
+    cubo[grn][1][0] = aux[1];
+    cubo[grn][2][0] = aux[2];
+}
+int ll(int cubo[6][3][3]){
+    int aux[3];
+    aux[0] = cubo[wht][0][0];
+    aux[1] = cubo[wht][1][0];
+    aux[2] = cubo[wht][2][0];
+    cubo[wht][0][0] = cubo[grn][0][0];
+    cubo[wht][1][0] = cubo[grn][1][0];
+    cubo[wht][2][0] = cubo[grn][2][0];
+    cubo[grn][0][0] = cubo[yel][0][0];
+    cubo[grn][1][0] = cubo[yel][1][0];
+    cubo[grn][2][0] = cubo[yel][2][0];
+    cubo[yel][0][0] = cubo[ble][0][0];
+    cubo[yel][1][0] = cubo[ble][1][0];
+    cubo[yel][2][0] = cubo[ble][2][0];
+    cubo[ble][0][0] = aux[0];
+    cubo[ble][1][0] = aux[1];
+    cubo[ble][2][0] = aux[2];
+}
+int u(int cubo[6][3][3]){
 
 }
-int ll(){
+int ul(int cubo[6][3][3]){
     
 }
-int u(){
+int d(int cubo[6][3][3]){
 
 }
-int ul(){
+int dl(int cubo[6][3][3]){
     
 }
-int d(){
+int b(int cubo[6][3][3]){
 
 }
-int dl(){
+int bl(int cubo[6][3][3]){
     
 }
-int b(){
+int f(int cubo[6][3][3]){
 
 }
-int bl(){
-    
-}
-int f(){
-
-}
-int fl(){
+int fl(int cubo[6][3][3]){
     
 }
 
@@ -156,37 +224,37 @@ int main(){
             r(cubo);
             break;
         case 'R':
-            rl();
+            rl(cubo);
             break;
         case 'l':
-            l();
+            l(cubo);
             break;
         case 'L':
-            ll();
+            ll(cubo);
             break;
         case 'u':
-            u();
+            u(cubo);
             break;
         case 'U':
-            ul();
+            ul(cubo);
             break;
         case 'd':
-            d();
+            d(cubo);
             break;
         case 'D':
-            dl();
+            dl(cubo);
             break;
         case 'f':
-            f();
+            f(cubo);
             break;
         case 'F':
-            fl();
+            fl(cubo);
             break;
         case 'b':
-            b();
+            b(cubo);
             break;
         case 'B':
-            bl();
+            bl(cubo);
             break;
         default:
             break;
