@@ -1,7 +1,3 @@
-/*
-By: DaviJMC
-Last Update: 25/10/2023 (DD/MM/YYYY)
-*/
 // Add func de mudar de face
 #include <iostream>
 
@@ -75,10 +71,37 @@ void setCubo(int cubo[6][3][3]) {
 
 
 void showCubo(int cubo[6][3][3]){
-    for(int i =0; i<6; i++){
-        for(int j =0; j<3; j++){        
-            for(int k =0; k<3; k++){
-                switch(cubo[i][j][k]){
+    for(int i=0; i<3; i++){
+        cout << "                        ";
+        for(int j=0; j<3; j++){
+            switch(cubo[yel][i][j]){
+                case 0:
+                    cout << "wht ";
+                    break;
+                case 1:
+                    cout << "org ";
+                    break;
+                case 2:
+                    cout << "grn ";
+                    break;
+                case 3:
+                    cout << "red ";
+                    break;
+                case 4:
+                    cout << "ble ";
+                    break;
+                case 5:
+                    cout << "yel ";
+                    break;
+            }
+        }
+        cout << endl;
+    }
+    cout << endl;
+    for(int k=0; k<3; k++){
+        for(int i=1; i<5; i++){
+            for(int j=0; j<3; j++){
+                switch(cubo[i][k][j]){
                     case 0:
                         cout << "wht ";
                         break;
@@ -99,7 +122,34 @@ void showCubo(int cubo[6][3][3]){
                         break;
                 }
             }
-            cout << endl;
+            cout << "            ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    for(int i=0; i<3; i++){
+        cout << "                        ";
+        for(int j=0; j<3; j++){
+            switch(cubo[wht][i][j]){
+                case 0:
+                    cout << "wht ";
+                    break;
+                case 1:
+                    cout << "org ";
+                    break;
+                case 2:
+                    cout << "grn ";
+                    break;
+                case 3:
+                    cout << "red ";
+                    break;
+                case 4:
+                    cout << "ble ";
+                    break;
+                case 5:
+                    cout << "yel ";
+                    break;
+            }
         }
         cout << endl;
     }
@@ -114,7 +164,7 @@ int nextmov(){
 
 
 void r(int cubo[6][3][3]){
-    int aux[3];
+    int aux[3]; //rodar lado vermelho
     aux[0] = cubo[wht][0][2];
     aux[1] = cubo[wht][1][2];
     aux[2] = cubo[wht][2][2];
@@ -151,7 +201,7 @@ void rl(int cubo[6][3][3]){
     cubo[ble][2][2] = aux[2];
 }
 
-int l(int cubo[6][3][3]){
+void l(int cubo[6][3][3]){
      int aux[3];
     aux[0] = cubo[wht][0][0];
     aux[1] = cubo[wht][1][0];
@@ -169,7 +219,7 @@ int l(int cubo[6][3][3]){
     cubo[grn][1][0] = aux[1];
     cubo[grn][2][0] = aux[2];
 }
-int ll(int cubo[6][3][3]){
+void ll(int cubo[6][3][3]){
     int aux[3];
     aux[0] = cubo[wht][0][0];
     aux[1] = cubo[wht][1][0];
@@ -187,28 +237,58 @@ int ll(int cubo[6][3][3]){
     cubo[ble][1][0] = aux[1];
     cubo[ble][2][0] = aux[2];
 }
-int u(int cubo[6][3][3]){
+void u(int cubo[6][3][3]){
+    int aux[3];
+    aux[0] = cubo[grn][0][0];
+    aux[1] = cubo[grn][0][1];
+    aux[2] = cubo[grn][0][2];
+    cubo[grn][0][0] = cubo[red][0][0];
+    cubo[grn][0][1] = cubo[red][0][1];
+    cubo[grn][0][2] = cubo[red][0][2];
+    cubo[red][0][0] = cubo[ble][0][0];
+    cubo[red][0][1] = cubo[ble][0][1];
+    cubo[red][0][2] = cubo[ble][0][2];
+    cubo[ble][0][0] = cubo[org][0][0];
+    cubo[ble][0][1] = cubo[org][0][1];
+    cubo[ble][0][2] = cubo[org][0][2];
+    cubo[org][0][0] = aux[0];
+    cubo[org][0][1] = aux[1];
+    cubo[org][0][2] = aux[2];
+}
+void ul(int cubo[6][3][3]){
+    int aux[3];
+    aux[0] = cubo[ble][0][0];
+    aux[1] = cubo[ble][0][1];
+    aux[2] = cubo[ble][0][2];
+    cubo[grn][0][0] = cubo[org][0][0];
+    cubo[grn][0][1] = cubo[org][0][1];
+    cubo[grn][0][2] = cubo[org][0][2];
+    cubo[red][0][0] = cubo[grn][0][0];
+    cubo[red][0][1] = cubo[grn][0][1];
+    cubo[red][0][2] = cubo[grn][0][2];
+    cubo[ble][0][0] = cubo[red][0][0];
+    cubo[ble][0][1] = cubo[red][0][1];
+    cubo[ble][0][2] = cubo[red][0][2];
+    cubo[org][0][0] = aux[0];
+    cubo[org][0][1] = aux[1];
+    cubo[org][0][2] = aux[2];
+}
+void d(int cubo[6][3][3]){
 
 }
-int ul(int cubo[6][3][3]){
+void dl(int cubo[6][3][3]){
     
 }
-int d(int cubo[6][3][3]){
+void b(int cubo[6][3][3]){
 
 }
-int dl(int cubo[6][3][3]){
+void bl(int cubo[6][3][3]){
     
 }
-int b(int cubo[6][3][3]){
+void f(int cubo[6][3][3]){
 
 }
-int bl(int cubo[6][3][3]){
-    
-}
-int f(int cubo[6][3][3]){
-
-}
-int fl(int cubo[6][3][3]){
+void fl(int cubo[6][3][3]){
     
 }
 
