@@ -1,4 +1,8 @@
-// Add func de mudar de face
+/*
+By: DaviJMC
+LastUpdate: 26/10/2023 (DD/MM/YYYY)
+*/
+// Future implemnts: Add func de mudar de face
 #include <iostream>
 
 using namespace std;
@@ -11,7 +15,7 @@ using namespace std;
 #define yel 5
 
 
-// Seta matriz do cubo
+// Matriz inivcial do cubo
 void setCubo(int cubo[6][3][3]) {
     cubo[0][0][0] = wht;
     cubo[0][0][1] = wht;
@@ -180,6 +184,16 @@ void r(int cubo[6][3][3]){
     cubo[grn][0][2] = aux[0];
     cubo[grn][1][2] = aux[1];
     cubo[grn][2][2] = aux[2];
+    aux[0] = cubo[red][0][0];
+    aux[1] = cubo[red][1][0];
+    cubo[red][0][0] = cubo[red][2][0];
+    cubo[red][1][0] = cubo[red][2][1];
+    cubo[red][2][0] = cubo[red][2][2];
+    cubo[red][2][1] = cubo[red][1][2];
+    cubo[red][2][2] = cubo[red][0][2];
+    cubo[red][1][2] = cubo[red][0][1];
+    cubo[red][0][2] = aux[0];
+    cubo[red][0][1] = aux[1];
 }
 
 void rl(int cubo[6][3][3]){
@@ -199,6 +213,16 @@ void rl(int cubo[6][3][3]){
     cubo[ble][0][2] = aux[0];
     cubo[ble][1][2] = aux[1];
     cubo[ble][2][2] = aux[2];
+    aux[1] = cubo[red][1][0];
+    aux[2] = cubo[red][2][0];
+    cubo[red][2][0] = cubo[red][0][0];
+    cubo[red][1][0] = cubo[red][0][1];
+    cubo[red][0][0] = cubo[red][0][2];//
+    cubo[red][0][1] = cubo[red][1][2];
+    cubo[red][0][2] = cubo[red][2][2];
+    cubo[red][1][2] = cubo[red][2][1];
+    cubo[red][2][2] = aux[2];
+    cubo[red][2][1] = aux[1];
 }
 
 void l(int cubo[6][3][3]){
@@ -218,6 +242,16 @@ void l(int cubo[6][3][3]){
     cubo[grn][0][0] = aux[0];
     cubo[grn][1][0] = aux[1];
     cubo[grn][2][0] = aux[2];
+    aux[1] = cubo[org][1][0];
+    aux[2] = cubo[org][2][0];
+    cubo[org][2][0] = cubo[org][0][0];
+    cubo[org][1][0] = cubo[org][0][1];
+    cubo[org][0][0] = cubo[org][0][2];//
+    cubo[org][0][1] = cubo[org][1][2];
+    cubo[org][0][2] = cubo[org][2][2];
+    cubo[org][1][2] = cubo[org][2][1];
+    cubo[org][2][2] = aux[2];
+    cubo[org][2][1] = aux[1];
 }
 void ll(int cubo[6][3][3]){
     int aux[3];
@@ -236,6 +270,16 @@ void ll(int cubo[6][3][3]){
     cubo[ble][0][0] = aux[0];
     cubo[ble][1][0] = aux[1];
     cubo[ble][2][0] = aux[2];
+    aux[0] = cubo[org][0][0];
+    aux[1] = cubo[org][1][0];
+    cubo[org][0][0] = cubo[org][2][0];
+    cubo[org][1][0] = cubo[org][2][1];
+    cubo[org][2][0] = cubo[org][2][2];
+    cubo[org][2][1] = cubo[org][1][2];
+    cubo[org][2][2] = cubo[org][0][2];
+    cubo[org][1][2] = cubo[org][0][1];
+    cubo[org][0][2] = aux[0];
+    cubo[org][0][1] = aux[1];
 }
 void u(int cubo[6][3][3]){
     int aux[3];
