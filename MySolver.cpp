@@ -1,6 +1,6 @@
 /*
 By: DaviJMC
-LastUpdate: 26/10/2023 (DD/MM/YYYY)
+LastUpdate: 17/01/2024 (DD/MM/YYYY)
 */
 // Future implemnts: Add func de mudar de face
 #include <iostream>
@@ -78,6 +78,7 @@ void showCubo(int cubo[6][3][3]){
     for(int i=0; i<3; i++){
         cout << "                        ";
         for(int j=0; j<3; j++){
+            //printf("i: %d j:%d ", i, j);
             switch(cubo[yel][i][j]){
                 case 0:
                     cout << "wht ";
@@ -105,6 +106,7 @@ void showCubo(int cubo[6][3][3]){
     for(int k=0; k<3; k++){
         for(int i=1; i<5; i++){
             for(int j=0; j<3; j++){
+                //printf("K:%dI:%dJ:%d ", k, i, j);
                 switch(cubo[i][k][j]){
                     case 0:
                         cout << "wht ";
@@ -126,7 +128,7 @@ void showCubo(int cubo[6][3][3]){
                         break;
                 }
             }
-            cout << "            ";
+            cout << "            "; //
         }
         cout << endl;
     }
@@ -134,6 +136,7 @@ void showCubo(int cubo[6][3][3]){
     for(int i=0; i<3; i++){
         cout << "                        ";
         for(int j=0; j<3; j++){
+            //printf("i: %d j: %d ", i, j);
             switch(cubo[wht][i][j]){
                 case 0:
                     cout << "wht ";
@@ -157,6 +160,7 @@ void showCubo(int cubo[6][3][3]){
         }
         cout << endl;
     }
+    cout << endl << endl << endl;
 }
 
 
@@ -298,8 +302,19 @@ void u(int cubo[6][3][3]){
     cubo[org][0][0] = aux[0];
     cubo[org][0][1] = aux[1];
     cubo[org][0][2] = aux[2];
+    aux[1] = cubo[yel][0][0];
+    aux[2] = cubo[yel][0][1];
+    cubo[yel][0][0] = cubo[yel][2][0];
+    cubo[yel][0][1] = cubo[yel][1][0];
+    cubo[yel][2][0] = cubo[yel][2][2];//
+    cubo[yel][1][0] = cubo[yel][2][1];
+    cubo[yel][2][2] = cubo[yel][0][2];
+    cubo[yel][2][1] = cubo[yel][1][2];
+    cubo[yel][0][2] = aux[1];
+    cubo[yel][1][2] = aux[2];
+    
 }
-void ul(int cubo[6][3][3]){
+void ul(int cubo[6][3][3]){ // tudo errado
     int aux[3];
     aux[0] = cubo[ble][0][0];
     aux[1] = cubo[ble][0][1];
@@ -316,9 +331,19 @@ void ul(int cubo[6][3][3]){
     cubo[org][0][0] = aux[0];
     cubo[org][0][1] = aux[1];
     cubo[org][0][2] = aux[2];
+    aux[0] = cubo[yel][0][0];
+    aux[1] = cubo[yel][1][0];
+    cubo[yel][0][0] = cubo[yel][2][0];
+    cubo[yel][1][0] = cubo[yel][2][1];
+    cubo[yel][2][0] = cubo[yel][2][2];
+    cubo[yel][2][1] = cubo[yel][1][2];
+    cubo[yel][2][2] = cubo[yel][0][2];
+    cubo[yel][1][2] = cubo[yel][0][1];
+    cubo[yel][0][2] = aux[0];
+    cubo[yel][0][1] = aux[1];
 }
 void d(int cubo[6][3][3]){
-
+    
 }
 void dl(int cubo[6][3][3]){
     
@@ -336,7 +361,7 @@ void fl(int cubo[6][3][3]){
     
 }
 
-int main(){
+int main(int argc, char **argv){
     int cubo[6][3][3];
     setCubo(cubo);
     showCubo(cubo);
@@ -385,4 +410,5 @@ int main(){
         }
         showCubo(cubo);
     }
+    return 0;
 }
