@@ -694,6 +694,13 @@ void rotateLine(int cubo[6][3][3]){ //roda pra esquerda
     cubo[org][2][2] = aux[8];
 }
 
+void rotateUp(int cube[6][3][3]){ //roda pra cima
+
+}
+
+void rotateDown(int cube[6][3][3]){ //roda pra baixo
+
+}
 
 int main(){
     int cubo[6][3][3];
