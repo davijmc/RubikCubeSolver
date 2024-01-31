@@ -1,9 +1,11 @@
 /*
 By: DaviJMC
-LastUpdate: 29/01/2024 (DD/MM/YYYY)
+LastUpdate: 31/01/2024 (DD/MM/YYYY)
 */
-// Future implemnts: Add func de mudar de face
+
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -15,7 +17,7 @@ using namespace std;
 #define yel 5
 
 
-// Matriz inivcial do cubo
+// Matriz inicial do cubo
 void setCubo(int cubo[6][3][3]) {
     cubo[0][0][0] = wht;
     cubo[0][0][1] = wht;
@@ -171,7 +173,40 @@ int nextmov(){
 }
 
 
-void r(int cubo[6][3][3]){
+int embaralha(){
+    char mov = 'r';
+    int rnd;
+    rnd = rand()%120;
+    if(rnd<=10){
+        mov = 'r';
+    }else if(rnd<=20){
+        mov = 'R';
+    }else if(rnd<=30){
+        mov = 'l';
+    }else if(rnd<=40){
+        mov = 'L';
+    }else if(rnd<=50){
+        mov = 'u';
+    }else if(rnd<=60){
+        mov = 'U';
+    }else if(rnd<=70){
+        mov = 'd';
+    }else if(rnd<=80){
+        mov = 'D';
+    }else if(rnd<=90){
+        mov = 'b';
+    }else if(rnd<=100){
+        mov = 'B';
+    }else if(rnd<=110){
+        mov = 'f';
+    }else if(rnd<=120){
+        mov = 'F';
+    }
+    return mov;
+}
+
+
+void right(int cubo[6][3][3]){
     int aux[3]; //rodar lado vermelho
     aux[0] = cubo[wht][0][2];
     aux[1] = cubo[wht][1][2];
@@ -200,7 +235,7 @@ void r(int cubo[6][3][3]){
     cubo[red][0][1] = aux[1];
 }
 
-void rl(int cubo[6][3][3]){
+void rightLine(int cubo[6][3][3]){
     int aux[3];
     aux[0] = cubo[wht][0][2];
     aux[1] = cubo[wht][1][2];
@@ -229,7 +264,7 @@ void rl(int cubo[6][3][3]){
     cubo[red][2][1] = aux[1];
 }
 
-void l(int cubo[6][3][3]){
+void left(int cubo[6][3][3]){
      int aux[3];
     aux[0] = cubo[wht][0][0];
     aux[1] = cubo[wht][1][0];
@@ -258,7 +293,7 @@ void l(int cubo[6][3][3]){
     cubo[org][2][1] = aux[1];
 }
 
-void ll(int cubo[6][3][3]){
+void leftLine(int cubo[6][3][3]){
     int aux[3];
     aux[0] = cubo[wht][0][0];
     aux[1] = cubo[wht][1][0];
@@ -287,7 +322,7 @@ void ll(int cubo[6][3][3]){
     cubo[org][0][1] = aux[1];
 }
 
-void u(int cubo[6][3][3]){
+void up(int cubo[6][3][3]){
     int aux[3];
     aux[0] = cubo[grn][0][0];
     aux[1] = cubo[grn][0][1];
@@ -317,7 +352,7 @@ void u(int cubo[6][3][3]){
     
 }
 
-void ul(int cubo[6][3][3]){
+void upLine(int cubo[6][3][3]){
     int aux[3];
     aux[0] = cubo[grn][0][0];
     aux[1] = cubo[grn][0][1];
@@ -347,7 +382,7 @@ void ul(int cubo[6][3][3]){
     
 }
 
-void d(int cubo[6][3][3]){
+void down(int cubo[6][3][3]){
     int aux[3];
     aux[0] = cubo[grn][2][0];
     aux[1] = cubo[grn][2][1];
@@ -376,7 +411,7 @@ void d(int cubo[6][3][3]){
     cubo[wht][1][0] = aux[2];
 }
 
-void dl(int cubo[6][3][3]){
+void downLine(int cubo[6][3][3]){
     int aux[3];
     aux[0] = cubo[grn][2][0];
     aux[1] = cubo[grn][2][1];
@@ -405,7 +440,7 @@ void dl(int cubo[6][3][3]){
     cubo[wht][1][2] = aux[2];    
 }
 
-void b(int cubo[6][3][3]){
+void back(int cubo[6][3][3]){
     int aux[3];
     aux[1] = cubo[ble][0][0];
     aux[2] = cubo[ble][0][1];
@@ -434,7 +469,7 @@ void b(int cubo[6][3][3]){
     cubo[yel][0][0] = aux[0];
 }
 
-void bl(int cubo[6][3][3]){
+void backLine(int cubo[6][3][3]){
     int aux[3];
     aux[1] = cubo[ble][0][0];
     aux[2] = cubo[ble][0][1];
@@ -463,7 +498,7 @@ void bl(int cubo[6][3][3]){
     cubo[wht][2][2] = aux[0];
 }
 
-void f(int cubo[6][3][3]){
+void front(int cubo[6][3][3]){
     int aux[3];
     aux[1] = cubo[grn][0][0];
     aux[2] = cubo[grn][0][1];
@@ -492,7 +527,7 @@ void f(int cubo[6][3][3]){
     cubo[wht][0][2] = aux[0];
 }
 
-void fl(int cubo[6][3][3]){
+void frontLine(int cubo[6][3][3]){
     int aux[3];
     aux[1] = cubo[grn][0][0];
     aux[2] = cubo[grn][0][1];
@@ -521,49 +556,206 @@ void fl(int cubo[6][3][3]){
     cubo[yel][2][2] = aux[2];
 }
 
+void rotate(int cubo[6][3][3]){ //roda pra direta
+    int aux[9];
+    aux[1] = cubo[wht][0][0];
+    aux[2] = cubo[wht][0][1];
+    cubo[wht][0][0] = cubo[wht][2][0];
+    cubo[wht][0][1] = cubo[wht][1][0];
+    cubo[wht][2][0] = cubo[wht][2][2];
+    cubo[wht][1][0] = cubo[wht][2][1];
+    cubo[wht][2][2] = cubo[wht][0][2];
+    cubo[wht][2][1] = cubo[wht][1][2];
+    cubo[wht][0][2] = aux[1];
+    cubo[wht][1][2] = aux[2];
+    aux[1] = cubo[yel][0][0];
+    aux[2] = cubo[yel][0][1];
+    cubo[yel][0][0] = cubo[yel][0][2];
+    cubo[yel][0][1] = cubo[yel][1][2];
+    cubo[yel][0][2] = cubo[yel][2][2];
+    cubo[yel][1][2] = cubo[yel][2][1];
+    cubo[yel][2][2] = cubo[yel][2][0];
+    cubo[yel][2][1] = cubo[yel][1][0];
+    cubo[yel][2][0] = aux[1];
+    cubo[yel][1][0] = aux[2];
+    aux[0] = cubo[grn][0][0];
+    aux[1] = cubo[grn][0][1];
+    aux[2] = cubo[grn][1][0];
+    aux[3] = cubo[grn][1][1];
+    aux[4] = cubo[grn][0][2];
+    aux[5] = cubo[grn][1][2];
+    aux[6] = cubo[grn][2][0];
+    aux[7] = cubo[grn][2][1];
+    aux[8] = cubo[grn][2][2];
+    cubo[grn][0][0] = cubo[org][0][0];
+    cubo[grn][0][1] = cubo[org][0][1];
+    cubo[grn][1][0] = cubo[org][1][0];
+    cubo[grn][1][1] = cubo[org][1][1];
+    cubo[grn][0][2] = cubo[org][0][2];
+    cubo[grn][1][2] = cubo[org][1][2];
+    cubo[grn][2][0] = cubo[org][2][0];
+    cubo[grn][2][1] = cubo[org][2][1];
+    cubo[grn][2][2] = cubo[org][2][2];
+    cubo[org][0][0] = cubo[ble][0][0];
+    cubo[org][0][1] = cubo[ble][0][1];
+    cubo[org][1][0] = cubo[ble][1][0];
+    cubo[org][1][1] = cubo[ble][1][1];
+    cubo[org][0][2] = cubo[ble][0][2];
+    cubo[org][1][2] = cubo[ble][1][2];
+    cubo[org][2][0] = cubo[ble][2][0];
+    cubo[org][2][1] = cubo[ble][2][1];
+    cubo[org][2][2] = cubo[ble][2][2];
+    cubo[ble][0][0] = cubo[red][0][0];
+    cubo[ble][0][1] = cubo[red][0][1];
+    cubo[ble][1][0] = cubo[red][1][0];
+    cubo[ble][1][1] = cubo[red][1][1];
+    cubo[ble][0][2] = cubo[red][0][2];
+    cubo[ble][1][2] = cubo[red][1][2];
+    cubo[ble][2][0] = cubo[red][2][0];
+    cubo[ble][2][1] = cubo[red][2][1];
+    cubo[ble][2][2] = cubo[red][2][2];
+    cubo[red][0][0] = aux[0];
+    cubo[red][0][1] = aux[1];
+    cubo[red][1][0] = aux[2];
+    cubo[red][1][1] = aux[3];
+    cubo[red][0][2] = aux[4];
+    cubo[red][1][2] = aux[5];
+    cubo[red][2][0] = aux[6];
+    cubo[red][2][1] = aux[7];
+    cubo[red][2][2] = aux[8];
+}
+
+void rotateLine(int cubo[6][3][3]){ //roda pra esquerda
+    int aux[9];
+    aux[1] = cubo[wht][0][0];
+    aux[2] = cubo[wht][0][1];
+    cubo[wht][0][0] = cubo[wht][0][2];
+    cubo[wht][0][1] = cubo[wht][1][2];
+    cubo[wht][0][2] = cubo[wht][2][2];
+    cubo[wht][1][2] = cubo[wht][2][1];
+    cubo[wht][2][2] = cubo[wht][2][0];
+    cubo[wht][2][1] = cubo[wht][1][0];
+    cubo[wht][2][0] = aux[1];
+    cubo[wht][1][0] = aux[2];
+    aux[1] = cubo[yel][0][0];
+    aux[2] = cubo[yel][0][1];
+    cubo[yel][0][0] = cubo[yel][2][0];
+    cubo[yel][0][1] = cubo[yel][1][0];
+    cubo[yel][2][0] = cubo[yel][2][2];
+    cubo[yel][1][0] = cubo[yel][2][1];
+    cubo[yel][2][2] = cubo[yel][0][2];
+    cubo[yel][2][1] = cubo[yel][1][2];
+    cubo[yel][0][2] = aux[1];
+    cubo[yel][1][2] = aux[2];
+    aux[0] = cubo[grn][0][0];
+    aux[1] = cubo[grn][0][1];
+    aux[2] = cubo[grn][1][0];
+    aux[3] = cubo[grn][1][1];
+    aux[4] = cubo[grn][0][2];
+    aux[5] = cubo[grn][1][2];
+    aux[6] = cubo[grn][2][0];
+    aux[7] = cubo[grn][2][1];
+    aux[8] = cubo[grn][2][2];
+    cubo[grn][0][0] = cubo[red][0][0];
+    cubo[grn][0][1] = cubo[red][0][1];
+    cubo[grn][1][0] = cubo[red][1][0];
+    cubo[grn][1][1] = cubo[red][1][1];
+    cubo[grn][0][2] = cubo[red][0][2];
+    cubo[grn][1][2] = cubo[red][1][2];
+    cubo[grn][2][0] = cubo[red][2][0];
+    cubo[grn][2][1] = cubo[red][2][1];
+    cubo[grn][2][2] = cubo[red][2][2];
+    cubo[red][0][0] = cubo[ble][0][0];
+    cubo[red][0][1] = cubo[ble][0][1];
+    cubo[red][1][0] = cubo[ble][1][0];
+    cubo[red][1][1] = cubo[ble][1][1];
+    cubo[red][0][2] = cubo[ble][0][2];
+    cubo[red][1][2] = cubo[ble][1][2];
+    cubo[red][2][0] = cubo[ble][2][0];
+    cubo[red][2][1] = cubo[ble][2][1];
+    cubo[red][2][2] = cubo[ble][2][2];
+    cubo[ble][0][0] = cubo[org][0][0];
+    cubo[ble][0][1] = cubo[org][0][1];
+    cubo[ble][1][0] = cubo[org][1][0];
+    cubo[ble][1][1] = cubo[org][1][1];
+    cubo[ble][0][2] = cubo[org][0][2];
+    cubo[ble][1][2] = cubo[org][1][2];
+    cubo[ble][2][0] = cubo[org][2][0];
+    cubo[ble][2][1] = cubo[org][2][1];
+    cubo[ble][2][2] = cubo[org][2][2];
+    cubo[org][0][0] = aux[0];
+    cubo[org][0][1] = aux[1];
+    cubo[org][1][0] = aux[2];
+    cubo[org][1][1] = aux[3];
+    cubo[org][0][2] = aux[4];
+    cubo[org][1][2] = aux[5];
+    cubo[org][2][0] = aux[6];
+    cubo[org][2][1] = aux[7];
+    cubo[org][2][2] = aux[8];
+}
+
+
 int main(){
     int cubo[6][3][3];
+    int cnt=0;
+    unsigned seed = time(NULL);
+    srand(seed);
     setCubo(cubo);
     showCubo(cubo);
     char mov = 'b';
     while(mov != 'a'){
-        mov = nextmov();
+        if(cnt){
+            mov = embaralha();
+            cnt--;
+        }else{
+            mov = nextmov();
+        }
         switch (mov){
         case 'r':
-            r(cubo);
+            right(cubo);
             break;
         case 'R':
-            rl(cubo);
+            rightLine(cubo);
             break;
         case 'l':
-            l(cubo);
+            left(cubo);
             break;
         case 'L':
-            ll(cubo);
+            leftLine(cubo);
             break;
         case 'u':
-            u(cubo);
+            up(cubo);
             break;
         case 'U':
-            ul(cubo);
+            upLine(cubo);
             break;
         case 'd':
-            d(cubo);
+            down(cubo);
             break;
         case 'D':
-            dl(cubo);
+            downLine(cubo);
             break;
         case 'f':
-            f(cubo);
+            front(cubo);
             break;
         case 'F':
-            fl(cubo);
+            frontLine(cubo);
             break;
         case 'b':
-            b(cubo);
+            back(cubo);
             break;
         case 'B':
-            bl(cubo);
+            backLine(cubo);
+            break;
+        case 's':
+            rotate(cubo);
+            break;
+        case 'S':
+            rotateLine(cubo);
+            break;
+        case 'q':
+            cout << "Quantas embaralhadas: ";
+            cin >> cnt;
             break;
         default:
             break;
