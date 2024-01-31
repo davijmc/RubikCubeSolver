@@ -696,26 +696,26 @@ void rotateLine(int cubo[6][3][3]){ //roda pra esquerda
 
 void rotateUp(int cubo[6][3][3]){ //roda pra cima
     int aux[9];
-    aux[1] = cubo[wht][0][0];
-    aux[2] = cubo[wht][0][1];
-    cubo[wht][0][0] = cubo[wht][0][2];
-    cubo[wht][0][1] = cubo[wht][1][2];
-    cubo[wht][0][2] = cubo[wht][2][2];
-    cubo[wht][1][2] = cubo[wht][2][1];
-    cubo[wht][2][2] = cubo[wht][2][0];
-    cubo[wht][2][1] = cubo[wht][1][0];
-    cubo[wht][2][0] = aux[1];
-    cubo[wht][1][0] = aux[2];
-    aux[1] = cubo[yel][0][0];
-    aux[2] = cubo[yel][0][1];
-    cubo[yel][0][0] = cubo[yel][2][0];
-    cubo[yel][0][1] = cubo[yel][1][0];
-    cubo[yel][2][0] = cubo[yel][2][2];
-    cubo[yel][1][0] = cubo[yel][2][1];
-    cubo[yel][2][2] = cubo[yel][0][2];
-    cubo[yel][2][1] = cubo[yel][1][2];
-    cubo[yel][0][2] = aux[1];
-    cubo[yel][1][2] = aux[2];
+    aux[1] = cubo[red][0][0];
+    aux[2] = cubo[red][0][1];
+    cubo[red][0][0] = cubo[red][0][2];
+    cubo[red][0][1] = cubo[red][1][2];
+    cubo[red][0][2] = cubo[red][2][2];
+    cubo[red][1][2] = cubo[red][2][1];
+    cubo[red][2][2] = cubo[red][2][0];
+    cubo[red][2][1] = cubo[red][1][0];
+    cubo[red][2][0] = aux[1];
+    cubo[red][1][0] = aux[2];
+    aux[1] = cubo[org][0][0];
+    aux[2] = cubo[org][0][1];
+    cubo[org][0][0] = cubo[org][2][0];
+    cubo[org][0][1] = cubo[org][1][0];
+    cubo[org][2][0] = cubo[org][2][2];
+    cubo[org][1][0] = cubo[org][2][1];
+    cubo[org][2][2] = cubo[org][0][2];
+    cubo[org][2][1] = cubo[org][1][2];
+    cubo[org][0][2] = aux[1];
+    cubo[org][1][2] = aux[2];
     aux[0] = cubo[grn][0][0];
     aux[1] = cubo[grn][0][1];
     aux[2] = cubo[grn][1][0];
@@ -764,7 +764,8 @@ void rotateUp(int cubo[6][3][3]){ //roda pra cima
 }
 
 void rotateDown(int cube[6][3][3]){ //roda pra baixo
-
+    int aux[9];
+    cubo[yel][0][0] = aux[0];
 }
 
 int main(){
@@ -824,6 +825,12 @@ int main(){
             break;
         case 'S':
             rotateLine(cubo);
+            break;
+        case 'a':
+            rotateUp(cubo);
+            break;
+        case 'A':
+            rotateDown(cubo);
             break;
         case 'q':
             cout << "Quantas embaralhadas: ";
