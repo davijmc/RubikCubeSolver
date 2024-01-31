@@ -763,7 +763,7 @@ void rotateUp(int cubo[6][3][3]){ //roda pra cima
     cubo[yel][2][2] = aux[8];
 }
 
-void rotateDown(int cube[6][3][3]){ //roda pra baixo
+void rotateDown(int cubo[6][3][3]){ //roda pra baixo
     int aux[9];
     cubo[yel][0][0] = aux[0];
 }
