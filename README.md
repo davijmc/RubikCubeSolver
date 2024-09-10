@@ -1,4 +1,6 @@
 # RubikCubeSolver
 Codebase for my project aimed at creating an automated machine capable of solving and assembling Rubik's Cubes.
 
-The file MySolver.cpp contains my attempt to create a C++ code capable of simulating, solving, and assembling a Rubik's Cube.
+- MySolver.cpp will contains my attempt to create a C++ code capable of simulating, solving, and assembling a Rubik's Cube.
+- CubeSimulator contains the cube simulator using matrix.
+- csDebugger contains the debugger version of CubeSimulator to help me to discover why it don't work perfectly
