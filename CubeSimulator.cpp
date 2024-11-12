@@ -926,12 +926,12 @@ void rotateDown(int cubo[6][3][3]){ //roda pra baixo
 }
 
 int main(){
-    char debugger = 'a'; // U = ON, otherthing = OFF
+    char debugger = 'O'; // U = ON, otherthing = OFF
     int cubo[6][3][3];
     int cnt=0;
     unsigned seed = time(NULL);
     srand(seed);
-    if(debugger == 'U'){
+    if(debugger == 'O'){
         setCuboDB(cubo);
         showCuboDB(cubo);
     }else{
@@ -1000,7 +1000,7 @@ int main(){
             cin >> cnt;
             break;
         case 'z': // seta o cubo inicial
-            if(debugger == 'U'){
+            if(debugger == 'O'){
                 setCuboDB(cubo);
             }else{
                 setCubo(cubo);
@@ -1009,7 +1009,7 @@ int main(){
         default:
             break;
         }
-        if(debugger == 'U'){
+        if(debugger == 'O'){
             showCuboDB(cubo);
         }else{
             showCubo(cubo);
