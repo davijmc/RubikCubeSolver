@@ -360,16 +360,16 @@ void rightLine(int cubo[6][3][3]){
 }
 
 void left(int cubo[6][3][3]){
-     int aux[3];
+    int aux[3];
     aux[0] = cubo[wht][0][0];
     aux[1] = cubo[wht][1][0];
     aux[2] = cubo[wht][2][0];
-    cubo[wht][0][0] = cubo[ble][0][0];
-    cubo[wht][1][0] = cubo[ble][1][0];
-    cubo[wht][2][0] = cubo[ble][2][0];
-    cubo[ble][0][0] = cubo[yel][0][0];
-    cubo[ble][1][0] = cubo[yel][1][0];
-    cubo[ble][2][0] = cubo[yel][2][0];
+    cubo[wht][2][0] = cubo[ble][0][2];
+    cubo[wht][1][0] = cubo[ble][1][2];
+    cubo[wht][0][0] = cubo[ble][2][2];
+    cubo[ble][0][2] = cubo[yel][0][0];
+    cubo[ble][1][2] = cubo[yel][1][0];
+    cubo[ble][2][2] = cubo[yel][2][0];
     cubo[yel][0][0] = cubo[grn][0][0];
     cubo[yel][1][0] = cubo[grn][1][0];
     cubo[yel][2][0] = cubo[grn][2][0];
@@ -399,22 +399,22 @@ void leftLine(int cubo[6][3][3]){
     cubo[grn][0][0] = cubo[yel][0][0];
     cubo[grn][1][0] = cubo[yel][1][0];
     cubo[grn][2][0] = cubo[yel][2][0];
-    cubo[yel][0][0] = cubo[ble][0][0];
-    cubo[yel][1][0] = cubo[ble][1][0];
-    cubo[yel][2][0] = cubo[ble][2][0];
-    cubo[ble][0][0] = aux[0];
-    cubo[ble][1][0] = aux[1];
-    cubo[ble][2][0] = aux[2];
-    aux[0] = cubo[org][0][0];
+    cubo[yel][0][0] = cubo[ble][0][2];
+    cubo[yel][1][0] = cubo[ble][1][2];
+    cubo[yel][2][0] = cubo[ble][2][2];
+    cubo[ble][0][2] = aux[2];
+    cubo[ble][1][2] = aux[1];
+    cubo[ble][2][2] = aux[0];
     aux[1] = cubo[org][1][0];
-    cubo[org][0][0] = cubo[org][2][0];
-    cubo[org][1][0] = cubo[org][2][1];
-    cubo[org][2][0] = cubo[org][2][2];
-    cubo[org][2][1] = cubo[org][1][2];
-    cubo[org][2][2] = cubo[org][0][2];
-    cubo[org][1][2] = cubo[org][0][1];
-    cubo[org][0][2] = aux[0];
-    cubo[org][0][1] = aux[1];
+    aux[2] = cubo[org][2][0];
+    cubo[org][2][0] = cubo[org][0][0];
+    cubo[org][1][0] = cubo[org][0][1];
+    cubo[org][0][0] = cubo[org][0][2];
+    cubo[org][0][1] = cubo[org][1][2];
+    cubo[org][0][2] = cubo[org][2][2];
+    cubo[org][1][2] = cubo[org][2][1];
+    cubo[org][2][2] = aux[2];
+    cubo[org][2][1] = aux[1];
 }
 
 void up(int cubo[6][3][3]){
