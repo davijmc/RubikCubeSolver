@@ -1,6 +1,6 @@
 /*
 By: DaviJMC
-LastUpdate: 31/01/2024 (DD/MM/YYYY)
+LastUpdate: 10/09/2024 (DD/MM/YYYY)
 */
 
 #include <iostream>
@@ -10,14 +10,15 @@ LastUpdate: 31/01/2024 (DD/MM/YYYY)
 using namespace std;
 
 #define wht 0
-#define org 3
+#define org 1
 #define grn 2
-#define red 1
+#define red 3
 #define ble 4
 #define yel 5
 
-// Matriz inicial do cubo - posicao
-void setCuboDB(int cubo[6][3][3]) {
+
+// Matriz inicial do cubo
+void setCubo(int cubo[6][3][3]) {
     cubo[0][0][0] = 46;
     cubo[0][0][1] = 47;
     cubo[0][0][2] = 48;
@@ -74,7 +75,8 @@ void setCuboDB(int cubo[6][3][3]) {
     cubo[5][2][2] = 9;
 }
 
-void showCuboDB(int cubo[6][3][3]){
+
+void showCubo(int cubo[6][3][3]){
     for(int i=0; i<3; i++){
         cout << "                 ";
         for(int j=0; j<3; j++){
@@ -106,154 +108,6 @@ void showCuboDB(int cubo[6][3][3]){
                 cout << "0";
             }
             cout << cubo[wht][i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << endl << endl << endl;
-}
-
-// Matriz inicial do cubo - Normal
-void setCubo(int cubo[6][3][3]) {
-    cubo[0][0][0] = wht;
-    cubo[0][0][1] = wht;
-    cubo[0][0][2] = wht;
-    cubo[0][1][0] = wht;
-    cubo[0][1][1] = wht;
-    cubo[0][1][2] = wht;
-    cubo[0][2][0] = wht;
-    cubo[0][2][1] = wht;
-    cubo[0][2][2] = wht;
-    cubo[1][0][0] = org;
-    cubo[1][0][1] = org;
-    cubo[1][0][2] = org;
-    cubo[1][1][0] = org;
-    cubo[1][1][1] = org;
-    cubo[1][1][2] = org;
-    cubo[1][2][0] = org;
-    cubo[1][2][1] = org;
-    cubo[1][2][2] = org;
-    cubo[2][0][0] = grn;
-    cubo[2][0][1] = grn;
-    cubo[2][0][2] = grn;
-    cubo[2][1][0] = grn;
-    cubo[2][1][1] = grn;
-    cubo[2][1][2] = grn;
-    cubo[2][2][0] = grn;
-    cubo[2][2][1] = grn;
-    cubo[2][2][2] = grn;
-    cubo[3][0][0] = red;
-    cubo[3][0][1] = red;
-    cubo[3][0][2] = red;
-    cubo[3][1][0] = red;
-    cubo[3][1][1] = red;
-    cubo[3][1][2] = red;
-    cubo[3][2][0] = red;
-    cubo[3][2][1] = red;
-    cubo[3][2][2] = red;
-    cubo[4][0][0] = ble;
-    cubo[4][0][1] = ble;
-    cubo[4][0][2] = ble;
-    cubo[4][1][0] = ble;
-    cubo[4][1][1] = ble;
-    cubo[4][1][2] = ble;
-    cubo[4][2][0] = ble;
-    cubo[4][2][1] = ble;
-    cubo[4][2][2] = ble;
-    cubo[5][0][0] = yel;
-    cubo[5][0][1] = yel;
-    cubo[5][0][2] = yel;
-    cubo[5][1][0] = yel;
-    cubo[5][1][1] = yel;
-    cubo[5][1][2] = yel;
-    cubo[5][2][0] = yel;
-    cubo[5][2][1] = yel;
-    cubo[5][2][2] = yel;
-}
-
-
-void showCubo(int cubo[6][3][3]){
-    for(int i=0; i<3; i++){
-        cout << "                        ";
-        for(int j=0; j<3; j++){
-            //printf("i: %d j:%d ", i, j);
-            switch(cubo[yel][i][j]){
-                case 0:
-                    cout << "wht ";
-                    break;
-                case 1:
-                    cout << "org ";
-                    break;
-                case 2:
-                    cout << "grn ";
-                    break;
-                case 3:
-                    cout << "red ";
-                    break;
-                case 4:
-                    cout << "ble ";
-                    break;
-                case 5:
-                    cout << "yel ";
-                    break;
-            }
-        }
-        cout << endl;
-    }
-    cout << endl;
-    for(int k=0; k<3; k++){
-        for(int i=1; i<5; i++){
-            for(int j=0; j<3; j++){
-                //printf("K:%dI:%dJ:%d ", k, i, j);
-                switch(cubo[i][k][j]){
-                    case 0:
-                        cout << "wht ";
-                        break;
-                    case 1:
-                        cout << "org ";
-                        break;
-                    case 2:
-                        cout << "grn ";
-                        break;
-                    case 3:
-                        cout << "red ";
-                        break;
-                    case 4:
-                        cout << "ble ";
-                        break;
-                    case 5:
-                        cout << "yel ";
-                        break;
-                }
-            }
-            cout << "            "; //
-        }
-        cout << endl;
-    }
-    cout << endl;
-    for(int i=0; i<3; i++){
-        cout << "                        ";
-        for(int j=0; j<3; j++){
-            //printf("i: %d j: %d ", i, j);
-            switch(cubo[wht][i][j]){
-                case 0:
-                    cout << "wht ";
-                    break;
-                case 1:
-                    cout << "org ";
-                    break;
-                case 2:
-                    cout << "grn ";
-                    break;
-                case 3:
-                    cout << "red ";
-                    break;
-                case 4:
-                    cout << "ble ";
-                    break;
-                case 5:
-                    cout << "yel ";
-                    break;
-            }
         }
         cout << endl;
     }
@@ -926,18 +780,12 @@ void rotateDown(int cubo[6][3][3]){ //roda pra baixo
 }
 
 int main(){
-    char debugger = 'U'; // U = ON, otherthing = OFF
     int cubo[6][3][3];
     int cnt=0;
     unsigned seed = time(NULL);
     srand(seed);
-    if(debugger == 'U'){
-        setCuboDB(cubo);
-        showCuboDB(cubo);
-    }else{
-        setCubo(cubo);
-        showCubo(cubo);
-    }
+    setCubo(cubo);
+    showCubo(cubo);
     char mov = ' ';
     while(mov != 'p'){
         if(cnt){
@@ -999,21 +847,13 @@ int main(){
             cout << "Quantas embaralhadas: ";
             cin >> cnt;
             break;
-        case 'z': // seta o cubo inicial
-            if(debugger == 'U'){
-                setCuboDB(cubo);
-            }else{
-                setCubo(cubo);
-            }
+        case 'z':
+            setCubo(cubo);
             break;
         default:
             break;
         }
-        if(debugger == 'U'){
-            showCuboDB(cubo);
-        }else{
-            showCubo(cubo);
-        }
+        showCubo(cubo);
     }
     return 0;
 }
