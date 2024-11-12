@@ -335,12 +335,12 @@ void rightLine(int cubo[6][3][3]){
     aux[0] = cubo[wht][0][2];
     aux[1] = cubo[wht][1][2];
     aux[2] = cubo[wht][2][2];
-    cubo[wht][0][2] = cubo[grn][2][0];
-    cubo[wht][1][2] = cubo[grn][1][0];
-    cubo[wht][2][2] = cubo[grn][0][0];
-    cubo[grn][2][0] = cubo[yel][0][2];
-    cubo[grn][1][0] = cubo[yel][1][2];
-    cubo[grn][0][0] = cubo[yel][2][2];
+    cubo[wht][0][2] = cubo[grn][0][2];
+    cubo[wht][1][2] = cubo[grn][1][2];
+    cubo[wht][2][2] = cubo[grn][2][2];
+    cubo[grn][0][2] = cubo[yel][0][2];
+    cubo[grn][1][2] = cubo[yel][1][2];
+    cubo[grn][2][2] = cubo[yel][2][2];
     cubo[yel][0][2] = cubo[ble][2][0];
     cubo[yel][1][2] = cubo[ble][1][0];
     cubo[yel][2][2] = cubo[ble][0][0];
@@ -926,7 +926,7 @@ void rotateDown(int cubo[6][3][3]){ //roda pra baixo
 }
 
 int main(){
-    char debugger = 'U'; // U = ON, otherthing = OFF
+    char debugger = 'a'; // U = ON, otherthing = OFF
     int cubo[6][3][3];
     int cnt=0;
     unsigned seed = time(NULL);
