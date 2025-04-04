@@ -591,7 +591,7 @@ void backLine(int cubo[6][3][3]){
     cubo[yel][0][2] = aux[0];
 }
 
-void front(int cubo[6][3][3]){//here
+void front(int cubo[6][3][3]){  //Debug from here
     int aux[3];
     aux[1] = cubo[grn][0][0];
     aux[2] = cubo[grn][0][1];
