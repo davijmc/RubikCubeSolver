@@ -537,35 +537,6 @@ void back(int cubo[6][3][3]){
     int aux[3];
     aux[1] = cubo[ble][0][0];
     aux[2] = cubo[ble][0][1];
-    cubo[ble][0][0] = cubo[ble][0][2];
-    cubo[ble][0][1] = cubo[ble][1][2];
-    cubo[ble][0][2] = cubo[ble][2][2];
-    cubo[ble][1][2] = cubo[ble][2][1];
-    cubo[ble][2][2] = cubo[ble][2][0];
-    cubo[ble][2][1] = cubo[ble][1][0];
-    cubo[ble][2][0] = aux[1];
-    cubo[ble][1][0] = aux[2];
-    aux[0] = cubo[red][0][2];
-    aux[1] = cubo[red][1][2];
-    aux[2] = cubo[red][2][2];
-    cubo[red][0][2] = cubo[wht][2][2];
-    cubo[red][1][2] = cubo[wht][2][1];
-    cubo[red][2][2] = cubo[wht][2][0];
-    cubo[wht][2][2] = cubo[org][2][0];
-    cubo[wht][2][1] = cubo[org][1][0];
-    cubo[wht][2][0] = cubo[org][0][0];
-    cubo[org][2][0] = cubo[yel][0][0];
-    cubo[org][1][0] = cubo[yel][0][1];
-    cubo[org][0][0] = cubo[yel][0][2];
-    cubo[yel][0][2] = aux[2];
-    cubo[yel][0][1] = aux[1];
-    cubo[yel][0][0] = aux[0];
-}
-
-void backLine(int cubo[6][3][3]){
-    int aux[3];
-    aux[1] = cubo[ble][0][0];
-    aux[2] = cubo[ble][0][1];
     cubo[ble][0][0] = cubo[ble][2][0];
     cubo[ble][0][1] = cubo[ble][1][0];
     cubo[ble][2][0] = cubo[ble][2][2];
@@ -574,24 +545,53 @@ void backLine(int cubo[6][3][3]){
     cubo[ble][2][1] = cubo[ble][1][2];
     cubo[ble][0][2] = aux[1];
     cubo[ble][1][2] = aux[2];
-    aux[0] = cubo[red][0][2];
-    aux[1] = cubo[red][1][2];
-    aux[2] = cubo[red][2][2];
-    cubo[red][0][2] = cubo[yel][0][0];
-    cubo[red][1][2] = cubo[yel][0][1];
-    cubo[red][2][2] = cubo[yel][0][2];
-    cubo[yel][0][0] = cubo[org][2][0];
-    cubo[yel][0][1] = cubo[org][1][0];
-    cubo[yel][0][2] = cubo[org][0][0];
-    cubo[org][2][0] = cubo[wht][2][0];
-    cubo[org][1][0] = cubo[wht][2][1];
-    cubo[org][0][0] = cubo[wht][2][2];
-    cubo[wht][2][0] = aux[2];
+    aux[0] = cubo[red][0][0];
+    aux[1] = cubo[red][1][0];
+    aux[2] = cubo[red][2][0];
+    cubo[red][0][0] = cubo[yel][0][2];
+    cubo[red][1][0] = cubo[yel][0][1];
+    cubo[red][2][0] = cubo[yel][0][0];
+    cubo[yel][0][0] = cubo[org][0][2];
+    cubo[yel][0][1] = cubo[org][1][2];
+    cubo[yel][0][2] = cubo[org][2][2];
+    cubo[org][0][2] = cubo[wht][2][2];
+    cubo[org][1][2] = cubo[wht][2][1];
+    cubo[org][2][2] = cubo[wht][2][0];
+    cubo[wht][2][0] = aux[0];
     cubo[wht][2][1] = aux[1];
-    cubo[wht][2][2] = aux[0];
+    cubo[wht][2][2] = aux[2];
 }
 
-void front(int cubo[6][3][3]){
+void backLine(int cubo[6][3][3]){
+    int aux[3];
+    aux[1] = cubo[ble][0][0];
+    aux[2] = cubo[ble][0][1];
+    cubo[ble][0][0] = cubo[ble][0][2];
+    cubo[ble][0][1] = cubo[ble][1][2];
+    cubo[ble][0][2] = cubo[ble][2][2];
+    cubo[ble][1][2] = cubo[ble][2][1];
+    cubo[ble][2][2] = cubo[ble][2][0];
+    cubo[ble][2][1] = cubo[ble][1][0];
+    cubo[ble][2][0] = aux[1];
+    cubo[ble][1][0] = aux[2];
+    aux[0] = cubo[red][0][0];
+    aux[1] = cubo[red][1][0];
+    aux[2] = cubo[red][2][0];
+    cubo[red][0][0] = cubo[wht][2][0];
+    cubo[red][1][0] = cubo[wht][2][1];
+    cubo[red][2][0] = cubo[wht][2][2];
+    cubo[wht][2][0] = cubo[org][2][2];
+    cubo[wht][2][1] = cubo[org][1][2];
+    cubo[wht][2][2] = cubo[org][0][2];
+    cubo[org][0][2] = cubo[yel][0][0];
+    cubo[org][1][2] = cubo[yel][0][1];
+    cubo[org][2][2] = cubo[yel][0][2];
+    cubo[yel][0][0] = aux[2];
+    cubo[yel][0][1] = aux[1];
+    cubo[yel][0][2] = aux[0];
+}
+
+void front(int cubo[6][3][3]){//here
     int aux[3];
     aux[1] = cubo[grn][0][0];
     aux[2] = cubo[grn][0][1];
@@ -926,7 +926,10 @@ void rotateDown(int cubo[6][3][3]){ //roda pra baixo
 }
 
 int main(){
-    char debugger = 'O'; // U = ON, otherthing = OFF
+    // 20 hidden layers cada layer tem todos os movimentos e cada movimento é um neuronio
+    // 20 layers de 12 neuronios cada +1 neurônio de não fazer nada caso já tenha resolvido
+    // o output só pode ser o cubo resolvido, depois posso adicionar padroes de imagem no output
+    char debugger = 'O'; // O = ON, otherthing = OFF
     int cubo[6][3][3];
     int cnt=0;
     unsigned seed = time(NULL);
