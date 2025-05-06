@@ -1,6 +1,5 @@
 /*
 By: DaviJMC
-LastUpdate: 31/01/2024 (DD/MM/YYYY)
 */
 
 #include <iostream>
@@ -620,7 +619,7 @@ void front(int cubo[6][3][3]){
     cubo[yel][2][2] = aux[0];
 }
 
-void frontLine(int cubo[6][3][3]){ // here -x-x-x-x-x-x-x-x-x-x-x-
+void frontLine(int cubo[6][3][3]){ 
     int aux[3];
     aux[1] = cubo[grn][0][0];
     aux[2] = cubo[grn][0][1];
@@ -632,45 +631,45 @@ void frontLine(int cubo[6][3][3]){ // here -x-x-x-x-x-x-x-x-x-x-x-
     cubo[grn][2][1] = cubo[grn][1][0];
     cubo[grn][2][0] = aux[1];
     cubo[grn][1][0] = aux[2];
-    aux[0] = cubo[red][0][0];
-    aux[1] = cubo[red][1][0];
-    aux[2] = cubo[red][2][0];
-    cubo[red][0][0] = cubo[wht][0][2];
-    cubo[red][1][0] = cubo[wht][0][1];
-    cubo[red][2][0] = cubo[wht][0][0];
-    cubo[wht][0][2] = cubo[org][2][2];
-    cubo[wht][0][1] = cubo[org][1][2];
-    cubo[wht][0][0] = cubo[org][0][2];
-    cubo[org][2][2] = cubo[yel][2][0];
-    cubo[org][1][2] = cubo[yel][2][1];
-    cubo[org][0][2] = cubo[yel][2][2];
-    cubo[yel][2][0] = aux[0];
-    cubo[yel][2][1] = aux[1];
-    cubo[yel][2][2] = aux[2];
+    aux[0] = cubo[red][0][2];
+    aux[1] = cubo[red][1][2];
+    aux[2] = cubo[red][2][2];
+    cubo[red][0][2] = cubo[yel][2][2];
+    cubo[red][1][2] = cubo[yel][2][1];
+    cubo[red][2][2] = cubo[yel][2][0];
+    cubo[yel][2][2] = cubo[org][2][0];
+    cubo[yel][2][1] = cubo[org][1][0];
+    cubo[yel][2][0] = cubo[org][0][0];
+    cubo[org][2][0] = cubo[wht][0][0];
+    cubo[org][1][0] = cubo[wht][0][1];
+    cubo[org][0][0] = cubo[wht][0][2];
+    cubo[wht][0][0] = aux[0];
+    cubo[wht][0][1] = aux[1];
+    cubo[wht][0][2] = aux[2];
 }
 
 void rotate(int cubo[6][3][3]){ //roda pra direta
     int aux[9];
     aux[1] = cubo[wht][0][0];
     aux[2] = cubo[wht][0][1];
-    cubo[wht][0][0] = cubo[wht][2][0];
-    cubo[wht][0][1] = cubo[wht][1][0];
-    cubo[wht][2][0] = cubo[wht][2][2];
-    cubo[wht][1][0] = cubo[wht][2][1];
-    cubo[wht][2][2] = cubo[wht][0][2];
-    cubo[wht][2][1] = cubo[wht][1][2];
-    cubo[wht][0][2] = aux[1];
-    cubo[wht][1][2] = aux[2];
+    cubo[wht][0][0] = cubo[wht][0][2];
+    cubo[wht][0][1] = cubo[wht][1][2];
+    cubo[wht][0][2] = cubo[wht][2][2];
+    cubo[wht][1][2] = cubo[wht][2][1];
+    cubo[wht][2][2] = cubo[wht][2][0];
+    cubo[wht][2][1] = cubo[wht][1][0];
+    cubo[wht][2][0] = aux[1];
+    cubo[wht][1][0] = aux[2];
     aux[1] = cubo[yel][0][0];
     aux[2] = cubo[yel][0][1];
-    cubo[yel][0][0] = cubo[yel][0][2];
-    cubo[yel][0][1] = cubo[yel][1][2];
-    cubo[yel][0][2] = cubo[yel][2][2];
-    cubo[yel][1][2] = cubo[yel][2][1];
-    cubo[yel][2][2] = cubo[yel][2][0];
-    cubo[yel][2][1] = cubo[yel][1][0];
-    cubo[yel][2][0] = aux[1];
-    cubo[yel][1][0] = aux[2];
+    cubo[yel][0][0] = cubo[yel][2][0];
+    cubo[yel][0][1] = cubo[yel][1][0];
+    cubo[yel][2][0] = cubo[yel][2][2];
+    cubo[yel][1][0] = cubo[yel][2][1];
+    cubo[yel][2][2] = cubo[yel][0][2];
+    cubo[yel][2][1] = cubo[yel][1][2];
+    cubo[yel][0][2] = aux[1];
+    cubo[yel][1][2] = aux[2];    
     aux[0] = cubo[grn][0][0];
     aux[1] = cubo[grn][0][1];
     aux[2] = cubo[grn][1][0];
@@ -722,24 +721,24 @@ void rotateLine(int cubo[6][3][3]){ //roda pra esquerda
     int aux[9];
     aux[1] = cubo[wht][0][0];
     aux[2] = cubo[wht][0][1];
-    cubo[wht][0][0] = cubo[wht][0][2];
-    cubo[wht][0][1] = cubo[wht][1][2];
-    cubo[wht][0][2] = cubo[wht][2][2];
-    cubo[wht][1][2] = cubo[wht][2][1];
-    cubo[wht][2][2] = cubo[wht][2][0];
-    cubo[wht][2][1] = cubo[wht][1][0];
-    cubo[wht][2][0] = aux[1];
-    cubo[wht][1][0] = aux[2];
+    cubo[wht][0][0] = cubo[wht][2][0];
+    cubo[wht][0][1] = cubo[wht][1][0];
+    cubo[wht][2][0] = cubo[wht][2][2];
+    cubo[wht][1][0] = cubo[wht][2][1];
+    cubo[wht][2][2] = cubo[wht][0][2];
+    cubo[wht][2][1] = cubo[wht][1][2];
+    cubo[wht][0][2] = aux[1];
+    cubo[wht][1][2] = aux[2];
     aux[1] = cubo[yel][0][0];
     aux[2] = cubo[yel][0][1];
-    cubo[yel][0][0] = cubo[yel][2][0];
-    cubo[yel][0][1] = cubo[yel][1][0];
-    cubo[yel][2][0] = cubo[yel][2][2];
-    cubo[yel][1][0] = cubo[yel][2][1];
-    cubo[yel][2][2] = cubo[yel][0][2];
-    cubo[yel][2][1] = cubo[yel][1][2];
-    cubo[yel][0][2] = aux[1];
-    cubo[yel][1][2] = aux[2];
+    cubo[yel][0][0] = cubo[yel][0][2];
+    cubo[yel][0][1] = cubo[yel][1][2];
+    cubo[yel][0][2] = cubo[yel][2][2];
+    cubo[yel][1][2] = cubo[yel][2][1];
+    cubo[yel][2][2] = cubo[yel][2][0];
+    cubo[yel][2][1] = cubo[yel][1][0];
+    cubo[yel][2][0] = aux[1];
+    cubo[yel][1][0] = aux[2];
     aux[0] = cubo[grn][0][0];
     aux[1] = cubo[grn][0][1];
     aux[2] = cubo[grn][1][0];
@@ -787,7 +786,7 @@ void rotateLine(int cubo[6][3][3]){ //roda pra esquerda
     cubo[org][2][2] = aux[8];
 }
 
-void rotateUp(int cubo[6][3][3]){ //roda pra cima
+void rotateUp(int cubo[6][3][3]){ //roda pra cima // debug from here -x-x-x-x-x-x-x-x-x-x-x-
     int aux[9];
     aux[1] = cubo[org][0][0];
     aux[2] = cubo[org][0][1];
